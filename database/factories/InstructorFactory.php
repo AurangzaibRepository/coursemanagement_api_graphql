@@ -12,7 +12,7 @@ class InstructorFactory extends Factory
 {
     protected $model = Instructor::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'first_name' => $this->faker->firstName,

@@ -38,6 +38,10 @@ class InstructorType extends GraphQLType
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Instructor email',
             ],
+            'image' => [
+                'type' => Type::string(),
+                'description' => 'Instructor image',
+            ],
             'status' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Instructor status',

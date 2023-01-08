@@ -30,6 +30,11 @@ class InstructorType extends GraphQLType
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Instructor last name',
             ],
+            'fullName' => [
+                'type' => Type::string(),
+                'description' => 'Combine first and last name',
+                'selectable' => false,
+            ],
             'phone_number' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Instructor phone number',

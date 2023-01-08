@@ -9,4 +9,9 @@ use Rebing\GraphQL\Support\Type as GraphQLType;
 
 class InstructorType extends GraphQLType
 {
+    protected $attributes = [
+        'name' => 'Instructor',
+        'description' => 'Collection of instructor',
+        'model' => Instructor::class,
+    ];
 }

@@ -10,7 +10,8 @@ return new class extends Migration
     {
         Schema::table('instructors', function (Blueprint $table) {
             $table->string('image')
-                ->nullable();
+                ->nullable()
+                ->after('courses_count');
         });
     }
 

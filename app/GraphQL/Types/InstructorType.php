@@ -14,4 +14,38 @@ class InstructorType extends GraphQLType
         'description' => 'Collection of instructor',
         'model' => Instructor::class,
     ];
+
+    public function fields(): array
+    {
+        return [
+            'id' => [
+                'type' => Type::nonNull(Type::int()),
+                'description' => 'Instructor Id',
+            ],
+            'first_name' => [
+                'type' => Type::nonNull(Type::string()),
+                'description' => 'Instructor first name',
+            ],
+            'last_name' => [
+                'type' => Type::nonNull(Type::string()),
+                'description' => 'Instructor last name',
+            ],
+            'phone_number' => [
+                'type' => Type::nonNull(Type::string()),
+                'description' => 'Instructor phone number',
+            ],
+            'email' => [
+                'type' => Type::nonNull(Type::string()),
+                'description' => 'Instructor email',
+            ],
+            'status' => [
+                'type' => Type::nonNull(Type::string()),
+                'description' => 'Instructor status',
+            ],
+            'courses_count' => [
+                'type' => Type::nonNull(Type::int()),
+                'description' => 'Number of courses taught by instructor',
+            ],
+        ];
+    }
 }

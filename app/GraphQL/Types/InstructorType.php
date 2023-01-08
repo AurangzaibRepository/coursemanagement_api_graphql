@@ -52,4 +52,9 @@ class InstructorType extends GraphQLType
             ],
         ];
     }
+
+    protected function resolveImageField($root, array $args): string
+    {
+        return url("/images/instructors/{$args['image']}");
+    }
 }

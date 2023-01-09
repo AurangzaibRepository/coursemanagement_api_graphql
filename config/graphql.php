@@ -82,6 +82,7 @@ return [
             ],
             // The types only available in this schema
             'types' => [
+                App\GraphQL\Enums\StatusEnum::class,
                 'Instructor' => App\GraphQL\Types\InstructorType::class,
             ],
 

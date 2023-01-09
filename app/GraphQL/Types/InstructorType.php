@@ -48,7 +48,7 @@ class InstructorType extends GraphQLType
                 'description' => 'Instructor image',
             ],
             'status' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::nonNull(GraphQL::type('Status')),
                 'description' => 'Instructor status',
             ],
             'courses_count' => [

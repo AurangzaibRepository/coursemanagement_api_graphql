@@ -12,4 +12,9 @@ class InstructorQuery extends Query
     protected $attributes = [
         'name' => 'Instructor',
     ];
+
+    public function type(): Type
+    {
+        return GraphQL::type('Instructor');
+    }
 }

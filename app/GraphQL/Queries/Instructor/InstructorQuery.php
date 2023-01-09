@@ -17,4 +17,15 @@ class InstructorQuery extends Query
     {
         return GraphQL::type('Instructor');
     }
+
+    public function args(): array
+    {
+        return [
+            'id' => [
+                'name' => 'id',
+                'type' => Type::int(),
+                'rules' => 'required|integer|exists:instructors',
+            ],
+        ];
+    }
 }

@@ -29,7 +29,7 @@ class InstructorQuery extends Query
         ];
     }
 
-    public function resolve($root, $args): Collection
+    public function resolve($root, $args): Instructor
     {
         return Instructor::find($args['id']);
     }

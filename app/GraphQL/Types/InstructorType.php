@@ -30,7 +30,7 @@ class InstructorType extends GraphQLType
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Instructor last name',
             ],
-            'fullName' => [
+            'fullName' => [ // Uses fullName accessor in isntructor model
                 'type' => Type::string(),
                 'description' => 'Combine first and last name',
                 'selectable' => false,

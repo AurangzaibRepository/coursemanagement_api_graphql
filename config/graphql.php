@@ -82,7 +82,7 @@ return [
             ],
             // The types only available in this schema
             'types' => [
-                // ExampleType::class,
+                'Instructor' => App\GraphQL\Types\InstructorType::class,
             ],
 
             // Laravel HTTP middleware

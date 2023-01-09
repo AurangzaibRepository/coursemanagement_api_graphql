@@ -28,4 +28,9 @@ class InstructorQuery extends Query
             ],
         ];
     }
+
+    public function resolve($root, $args): Collection
+    {
+        return Instructor::find($args['id']);
+    }
 }

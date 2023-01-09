@@ -24,7 +24,7 @@ class InstructorQuery extends Query
             'id' => [
                 'name' => 'id',
                 'type' => Type::int(),
-                'rules' => 'required|integer|exists:instructors',
+                'rules' => 'required|exists:instructors',
             ],
         ];
     }
@@ -32,5 +32,13 @@ class InstructorQuery extends Query
     public function resolve($root, $args): Collection
     {
         return Instructor::find($args['id']);
+    }
+
+    public function validationErrorMessages(array $args=[]): array
+    {
+        return [
+            'id.required' => 'Id is required',
+            'id.exists' => 'Instructor not found',
+        ];
     }
 }

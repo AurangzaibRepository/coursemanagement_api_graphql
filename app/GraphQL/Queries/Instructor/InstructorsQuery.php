@@ -6,6 +6,7 @@ use App\Models\Instructor;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use Rebing\GraphQL\Support\Facades\GraphQL;
+use Illuminate\Database\Eloquent\Builder;
 
 class InstructorsQuery extends Query
 {
@@ -38,5 +39,15 @@ class InstructorsQuery extends Query
                 'type' => Type::int(),
             ],
         ];
+    }
+
+    public function resolve($root, $args): array
+    {
+        $query = $this->applyFilters($args);
+    }
+
+    private function applyFilters(array $filters): Builder
+    {
+           
     }
 }

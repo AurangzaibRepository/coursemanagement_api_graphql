@@ -33,7 +33,7 @@ class InstructorsQuery extends Query
             ],
             'status' => [
                 'name' => 'status',
-                'type' => GrpahQL::type('Status'),
+                'type' => GraphQL::type('Status'),
             ],
             'page_no' => [
                 'name' => 'page_no',
@@ -46,7 +46,7 @@ class InstructorsQuery extends Query
     {
         $query = $this->applyFilters($args);
         $pageSize = config('app.page_size');
-        $pageNo = (Arr::exists('page_no') ? $filters['page_no'] : 1);
+        $pageNo = (Arr::exists($args, 'page_no') ? $args['page_no'] : 1);
         $offset = ($pageNo * $pageSize) - $pageSize;
 
         $data = $query->limit($pageSize)
@@ -58,7 +58,7 @@ class InstructorsQuery extends Query
 
     private function applyFilters(array $filters): Builder
     {
-        $query = $this->orderBy('id');
+        $query = Instructor::orderBy('id');
 
         if (Arr::exists($filters, 'email')) {
             $query = $query->where('email', 'like', "%{$filters['email']}%");

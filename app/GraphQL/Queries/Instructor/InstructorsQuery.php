@@ -78,4 +78,11 @@ class InstructorsQuery extends Query
 
         return $query;
     }
+
+    public function validationErrorMessages(array $args=[]): array
+    {
+        return [
+            'status.Illuminate\Validation\Rules\Enum' => 'Invalid status',
+        ];
+    }
 }

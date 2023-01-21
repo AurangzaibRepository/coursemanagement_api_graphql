@@ -12,4 +12,9 @@ class InstructorsQuery extends Query
     protected $attributes = [
         'name' => 'Instructors list',
     ];
+
+    public function type(): Type
+    {
+        return Type::listOf(GraphQL::type('Instructor'));
+    }
 }

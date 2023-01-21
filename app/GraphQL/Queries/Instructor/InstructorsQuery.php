@@ -9,4 +9,7 @@ use Rebing\GraphQL\Support\Facades\GraphQL;
 
 class InstructorsQuery extends Query
 {
+    protected $attributes = [
+        'name' => 'Instructors list',
+    ];
 }

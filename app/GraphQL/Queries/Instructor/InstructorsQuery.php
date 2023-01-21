@@ -17,4 +17,26 @@ class InstructorsQuery extends Query
     {
         return Type::listOf(GraphQL::type('Instructor'));
     }
+
+    public function args(): array
+    {
+        return [
+            'name' => [
+                'name' => 'name',
+                'type' => Type::string(),
+            ],
+            'email' => [
+                'name' => 'email',
+                'type' => Type::string(),
+            ],
+            'status' => [
+                'name' => 'status',
+                'type' => GrpahQL::type('Status'),
+            ],
+            'page_no' => [
+                'name' => 'page_no',
+                'type' => Type::int(),
+            ],
+        ];
+    }
 }

@@ -20,7 +20,7 @@ class InstructorsQuery extends Query
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('Instructor'));
+        return GraphQL::paginate('Instructor');
     }
 
     public function args(): array
@@ -46,18 +46,14 @@ class InstructorsQuery extends Query
         ];
     }
 
-    public function resolve($root, $args): Collection
+    public function resolve($root, $args)
     {
         $query = $this->applyFilters($args);
         $pageSize = config('app.page_size');
         $pageNo = (Arr::exists($args, 'page_no') ? $args['page_no'] : 1);
         $offset = ($pageNo * $pageSize) - $pageSize;
 
-        $data = $query->limit($pageSize)
-                    ->offset($offset)
-                    ->get();
-
-        return $data;
+        return $query->paginate($pageSize, ['*'], 'page', $pageNo);
     }
 
     private function applyFilters(array $filters): Builder

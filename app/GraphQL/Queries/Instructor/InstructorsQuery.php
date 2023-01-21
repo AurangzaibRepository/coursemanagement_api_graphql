@@ -3,10 +3,13 @@
 namespace App\GraphQL\Queries\Instructor;
 
 use App\Models\Instructor;
+use App\Enums\Status;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Validation\Rules\Enum;
 use Illuminate\Support\Arr;
 
 class InstructorsQuery extends Query
@@ -33,7 +36,8 @@ class InstructorsQuery extends Query
             ],
             'status' => [
                 'name' => 'status',
-                'type' => GraphQL::type('Status'),
+                'type' => Type::string(),
+                'rules' => [new Enum(Status::class)],
             ],
             'page_no' => [
                 'name' => 'page_no',
@@ -42,7 +46,7 @@ class InstructorsQuery extends Query
         ];
     }
 
-    public function resolve($root, $args): array
+    public function resolve($root, $args): Collection
     {
         $query = $this->applyFilters($args);
         $pageSize = config('app.page_size');

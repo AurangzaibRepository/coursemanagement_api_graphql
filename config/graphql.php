@@ -75,7 +75,8 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'Instructor' => App\GraphQL\Queries\Instructor\InstructorQuery::class
+                'Instructor' => App\GraphQL\Queries\Instructor\InstructorQuery::class,
+                'Instructors' => App\GraphQL\Queries\Instructor\InstructorsQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,

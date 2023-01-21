@@ -7,6 +7,7 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 class InstructorsQuery extends Query
 {
@@ -44,10 +45,33 @@ class InstructorsQuery extends Query
     public function resolve($root, $args): array
     {
         $query = $this->applyFilters($args);
+        $pageSize = config('app.page_size');
+        $pageNo = (Arr::exists('page_no') ? $filters['page_no'] : 1);
+        $offset = ($pageNo * $pageSize) - $pageSize;
+
+        $data = $query->limit($pageSize)
+                    ->offset($offset)
+                    ->get();
+
+        return $data;
     }
 
     private function applyFilters(array $filters): Builder
     {
-           
+        $query = $this->orderBy('id');
+
+        if (Arr::exists($filters, 'email')) {
+            $query = $query->where('email', 'like', "%{$filters['email']}%");
+        }
+
+        if (Arr::exists($filters, 'status')) {
+            $query = $query->where('status', $filters['status']);
+        }
+
+        if (Arr::exists($filters, 'name')) {
+            $query = $query->whereRaw("(first_name like '%{$filters['name']}%' or last_name like '%{$filters['name']}%')");
+        }
+
+        return $query;
     }
 }

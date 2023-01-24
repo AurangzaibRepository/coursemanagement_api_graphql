@@ -16,7 +16,7 @@ class CourseFactory extends Factory
     {
         return [
             'title' => $this->faker->words(1, true), //$this->faker->title
-            'description' => $this->faker->text
+            'description' => $this->faker->text,
         ];
     }
 }

@@ -4,10 +4,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\InstructorCourse;
 
 class InstructorCourseSeeder extends Seeder
 {
     public function run(): void
     {
+        InstructorCourse::factory()
+                    ->count(20)
+                    ->create();
     }
 }

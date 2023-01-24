@@ -15,4 +15,9 @@ class Course extends Model
         'description',
         'image',
     ];
+
+    public function instructors(): Relation
+    {
+        return $this->belongsToMany(Instructor::class, 'instructor_courses');
+    }
 }

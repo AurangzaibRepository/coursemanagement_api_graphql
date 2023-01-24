@@ -20,7 +20,7 @@ class InstructorCourseFactory extends Factory
                             ->pluck('id')
                             ->toArray();
 
-        $courseIdList = Coure::all()
+        $courseIdList = Course::all()
                         ->pluck('id')
                         ->toArray();
 

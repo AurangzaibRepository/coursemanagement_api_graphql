@@ -16,7 +16,17 @@ class InstructorCourseFactory extends Factory
 
     public function definition(): array
     {
+        $instructorIdList = Instructor::all()
+                            ->pluck('id')
+                            ->toArray();
+
+        $courseIdList = Coure::all()
+                        ->pluck('id')
+                        ->toArray();
+
         return [
+            'instructor_id' => $this->faker->randomElement($instructorIdList),
+            'course_id' => $this->faker->randomElement($courseIdList),
         ];
     }
 }

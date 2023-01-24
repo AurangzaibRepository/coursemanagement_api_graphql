@@ -10,6 +10,10 @@ return new class extends Migration
     {
         Schema::create('instructor_courses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('instructor_id')
+                    ->constrained('instructors');
+            $table->foreignId('course_id')
+                    ->constrained('courses');
             $table->timestamps();
         });
     }
